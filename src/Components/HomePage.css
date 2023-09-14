@@ -31,6 +31,7 @@
 }
 table{
     width: 82vw;
+    box-shadow: 0px 0px 12px 1px grey;
 }
 table, th{
     border: 1px solid;
@@ -52,9 +53,12 @@ table, th{
     color: black;
     margin-top: 24px;
     position: fixed;
-    bottom: 10vh;
-    left: 50%;
+    bottom: 2vh;
+    width: inherit;
+    padding: 8px;
+    background-color: #f5e0e0;
 }
+
 .pagination > span{
     background-color: rgb(76, 120, 181);
     padding: 6px;

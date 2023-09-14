@@ -25,6 +25,7 @@ const HomePage = () => {
     const [deleteArr, setDeleteArr] = useState([])
     const [contactsArr, setContactsArr] = useState([])
     let [page, setPage] = useState(1)
+    let [searchType, setSearchType] = useState("")
     
     console.log("importSuccess",invSuc)
     const token = JSON.parse(localStorage.getItem("token"));
@@ -102,7 +103,7 @@ const HomePage = () => {
 
     console.log(invokeImport)
     return (
-        <GlobalContext.Provider value={{generatePDF,page, delSuc, setDelSuc,handleDelete,invokeDeleteSuccess,setInvokeDeleteSuccess,invSuc, setInvSuc,deleteArr, handleDeleteMany, setDeleteArr, setContactsArr, contactsArr, invokeImport, setInvokeImport, invokeDelete,setInvokeDelete, fetchContacts}} >
+        <GlobalContext.Provider value={{generatePDF,page, delSuc, setDelSuc,handleDelete,invokeDeleteSuccess,setInvokeDeleteSuccess,invSuc, setInvSuc,deleteArr, handleDeleteMany, setDeleteArr, setContactsArr, contactsArr, invokeImport, setInvokeImport, invokeDelete,setInvokeDelete, fetchContacts, searchType, setSearchType}} >
         <div className="mainContainer">
         
 

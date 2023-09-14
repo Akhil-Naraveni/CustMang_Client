@@ -11,6 +11,37 @@ import "./Import.css"
 const ImportCard = (props) => {
     const {invSuc, setInvSuc, setInvokeImport, fetchContacts } = useContext(GlobalContext)
    const token = JSON.parse(localStorage.getItem("token"))
+   let fileReader;
+   const handleFileRead = (e) =>{
+        const fileData = fileReader.result;
+        console.log("entered")
+        let result = parse(fileData, {header:true})
+        console.log(result)
+        PostFileData(result)
+        
+   }
+   const handleFileChoosen = (file) =>{
+        fileReader = new FileReader()
+        fileReader.onloadend = handleFileRead;
+        fileReader.readAsText(file)
+   }
+
+   const PostFileData = (data) =>{
+    axios('https://contactmanagerbackend-w58d.onrender.com/api/v1/contacts',{
+        method:"POST",
+        headers:{
+            "Authorization":token
+        },
+        data:data.data
+    })
+    .then((res)=>{
+        console.log(res)
+        setInvSuc(true)
+        fetchContacts()
+    }).catch(e=>{
+        console.log(e)
+    })
+   }
 
     const handleCSVFile=(e)=>{
         console.log("Enter handle csv")
@@ -57,6 +88,7 @@ const ImportCard = (props) => {
                     <br/> File here</h4>
             </div>
             <div>
+                <input type='file' className='inputHidden' accept='.csv' onChange={e => handleFileChoosen(e.target.files[0])}/>
                 <input type="file" onChange={(e) => { console.log(e.target) }} style={{ display: 'none' }} />
             </div>
             <i className="fa fa-upload fa-5x text-primary "></i>

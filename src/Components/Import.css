@@ -33,3 +33,9 @@ h3{
     border-radius: 100px;
     padding: 8px;
 }
+.inputHidden{
+    position: absolute;
+    top: 65%;
+    left: 30%;
+    opacity: 0;
+}

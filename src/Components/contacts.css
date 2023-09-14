@@ -138,7 +138,7 @@ tbody .btn:nth-child(odd){
     flex-direction: row;
     justify-content: center;
     align-items: center;
-
+    margin-left: 46px;
 }
 table hr{
     height: 16px;

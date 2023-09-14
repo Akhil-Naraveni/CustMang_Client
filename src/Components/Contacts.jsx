@@ -13,7 +13,7 @@ import JsPDF from 'jspdf';
 
 const Contacts = () => {
 
-    const { setInvokeImport, contactsArr, setContactsArr, setDeleteArr, setInvokeDelete, handleDeleteMany } = useContext(GlobalContext)
+    const { setInvokeImport, contactsArr, setContactsArr, setDeleteArr, setInvokeDelete, handleDeleteMany, searchType, setSearchType} = useContext(GlobalContext)
 
     const handleCheckbox = (e) => {
         const { id, checked } = e.target
@@ -50,9 +50,9 @@ const Contacts = () => {
                             <div className="headerCmn decH">
                                 <FilterListSharpIcon></FilterListSharpIcon>
                                 <p> Filter |</p>
-                                <select>
-                                    <option>Name</option>
-                                    <option>Email</option>
+                                <select onChange={e => {setSearchType(e.target.value)}} name="filterType" id="filterType">
+                                    <option value='name'>Name</option>
+                                    <option value="email">Email</option>
                                 </select>
                                 <ExpandMoreSharpIcon></ExpandMoreSharpIcon>
                             </div>
@@ -123,9 +123,9 @@ const Contacts = () => {
                                         <td>{data?.company}</td>
                                         <td>{data?.industry}</td>
                                         {/* <td>{data?.email}</td> */}
-                                        <td class="tooltip">{data?.email}
-                                            <span class="tooltiptext">{data?.email}</span>
-                                        </td>                                        <td>{data?.phonenumber}</td>
+                                        <td className="tooltip">{data?.email}
+                                            <span className="tooltiptext">{data?.email}</span>
+                                        </td><td>{data?.phonenumber}</td>
                                         <td>{data?.country}</td>
                                         {/* <td><button className='btn' id={data._id} onClick={(e) => {
                                             setInvokeDelete(true)

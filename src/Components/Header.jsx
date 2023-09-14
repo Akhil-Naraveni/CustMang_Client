@@ -8,16 +8,17 @@ import { red, blue, grey } from '@mui/material/colors';
 
 
 const Header = () =>{
-    const {setInvokeImport} = useContext(GlobalContext)
+    const {setInvokeImport, searchType} = useContext(GlobalContext)
     const {setInvokeDelete, setContactsArr, fetchContacts} = useContext(GlobalContext)
     const [search, setSearch] = useState("")
   //search by email
+  console.log(searchType)
   useEffect(() => {
     if (search === "") {
         fetchContacts()
     }
     else {
-      axios(`https://contactmanagerbackend-w58d.onrender.com/api/v1/contacts/${search}`, {
+      axios(`https://contactmanagerbackend-w58d.onrender.com/api/v1/contacts/${search}?searchType=${searchType}`, {
         method: "get",
         headers: {
           "Authorization": JSON.parse(localStorage.getItem("token"))
