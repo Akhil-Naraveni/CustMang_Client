@@ -18,7 +18,7 @@ const Header = () =>{
         fetchContacts()
     }
     else {
-      axios(`https://contactmanagerbackend-w58d.onrender.com/api/v1/contacts/${search}?searchType=${searchType}`, {
+      axios(`https://custmang-server.onrender.com/api/v1/contacts/${search}?searchType=${searchType}`, {
         method: "get",
         headers: {
           "Authorization": JSON.parse(localStorage.getItem("token"))
@@ -30,7 +30,7 @@ const Header = () =>{
         console.log(e)
       })
     }
-  }, [search])
+  }, [search, searchType])
     return(
         <div className="">
             <div className="headercontainer">

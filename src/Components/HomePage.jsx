@@ -25,7 +25,7 @@ const HomePage = () => {
     const [deleteArr, setDeleteArr] = useState([])
     const [contactsArr, setContactsArr] = useState([])
     let [page, setPage] = useState(1)
-    let [searchType, setSearchType] = useState("")
+    let [searchType, setSearchType] = useState("name")
     
     console.log("importSuccess",invSuc)
     const token = JSON.parse(localStorage.getItem("token"));
@@ -33,7 +33,7 @@ const HomePage = () => {
         fetchContacts()
     }, [])
     function fetchContacts() {
-        axios(`https://contactmanager-22.onrender.com/api/v1/contacts?page=${page}`, {
+        axios(`https://custmang-server.onrender.com/api/v1/contacts?page=${page}`, {
              method: 'GET',
             headers: {
                 "Authorization": token
@@ -92,7 +92,7 @@ const HomePage = () => {
         
     }
     const handleNext = () =>{
-        if(contactsArr.length == 8){
+        if(contactsArr.length === 8){
             setPage(page += 1)
         }
         

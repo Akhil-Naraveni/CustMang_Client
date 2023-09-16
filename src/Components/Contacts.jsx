@@ -47,14 +47,18 @@ const Contacts = () => {
                                 <p className="calender">  Select Date</p>
                                 <ExpandMoreSharpIcon></ExpandMoreSharpIcon>
                             </div>
-                            <div className="headerCmn decH">
+                            <div className="headerCmn decH filter">
                                 <FilterListSharpIcon></FilterListSharpIcon>
-                                <p> Filter |</p>
+                                {/* <p> Filter |</p> */}
                                 <select onChange={e => {setSearchType(e.target.value)}} name="filterType" id="filterType">
                                     <option value='name'>Name</option>
                                     <option value="email">Email</option>
+                                    <option value="country">Country</option>
+                                    <option value="industry">Industry</option>
+                                    <option value="designation">Designation</option>
+                                    <option value="company">Company</option>
                                 </select>
-                                <ExpandMoreSharpIcon></ExpandMoreSharpIcon>
+                                {/* <ExpandMoreSharpIcon></ExpandMoreSharpIcon> */}
                             </div>
                         </div>
                         <div className="rightBtns">
