@@ -10,14 +10,14 @@ import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
 
 
 const DeleteCard = (props) => {
-    const {deleteArr, setInvokeDelete , fetchContacts,delSuc, setDelSuc } = useContext(GlobalContext)
+    const {deleteArr, setInvokeDelete , fetchContacts, setDelSuc } = useContext(GlobalContext)
     // const {deleteArr, setInvokeDeleteCard, getData} = useContext(GlobalContext)
     const token = JSON.parse(localStorage.getItem("token"))
 
     const handleDelete=async()=>{
        console.log("delete",deleteArr)
         setInvokeDelete(false);
-            axios('https://custmang-server.onrender.com/api/v1/contacts', {
+        axios('https://custmang-server.onrender.com/api/v1/contacts', {
             method:"delete",
             headers:{
                 "Content-Type":"Application/json",

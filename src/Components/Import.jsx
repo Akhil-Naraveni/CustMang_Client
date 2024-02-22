@@ -2,14 +2,11 @@ import React, { useContext } from 'react';
 import { parse } from "papaparse"
 import axios from 'axios';
 import { GlobalContext } from './HomePage';
-import {blue } from '@mui/material/colors';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import NoteAddIcon from '@mui/icons-material/NoteAdd';
-import Button from '@mui/material/Button';
 import "./Import.css"
 
 const ImportCard = (props) => {
-    const {invSuc, setInvSuc, setInvokeImport, fetchContacts } = useContext(GlobalContext)
+    const { setInvSuc, setInvokeImport, fetchContacts } = useContext(GlobalContext)
    const token = JSON.parse(localStorage.getItem("token"))
    let fileReader;
    const handleFileRead = (e) =>{
@@ -37,6 +34,7 @@ const ImportCard = (props) => {
     .then((res)=>{
         console.log(res)
         setInvSuc(true)
+        setInvokeImport(false)
         fetchContacts()
     }).catch(e=>{
         console.log(e)

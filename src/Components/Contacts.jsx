@@ -13,8 +13,7 @@ import JsPDF from 'jspdf';
 
 const Contacts = () => {
 
-    const { setInvokeImport, contactsArr, setContactsArr, setDeleteArr, setInvokeDelete, handleDeleteMany, searchType, setSearchType} = useContext(GlobalContext)
-
+    const { setInvokeImport, contactsArr, setContactsArr, setDeleteArr, setInvokeDelete, handleDeleteMany, setSearchType, setInvokeEdit, setEditId} = useContext(GlobalContext)
     const handleCheckbox = (e) => {
         const { id, checked } = e.target
         if (id === "selectAll") {
@@ -129,7 +128,7 @@ const Contacts = () => {
                                         {/* <td>{data?.email}</td> */}
                                         <td className="tooltip">{data?.email}
                                             <span className="tooltiptext">{data?.email}</span>
-                                        </td><td>{data?.phonenumber}</td>
+                                        </td><td>{data?.phoneNumber}</td>
                                         <td>{data?.country}</td>
                                         {/* <td><button className='btn' id={data._id} onClick={(e) => {
                                             setInvokeDelete(true)
@@ -138,7 +137,10 @@ const Contacts = () => {
                                         }><i className='fa fa-trash m-1 text-danger' onClick={() =>{handleDelete()}}></i></button></td> */}
                                         <td><span></span>
                                             <button className='btn' id={data._id} >
-                                                <ModeEditOutlinedIcon sx={{ fontSize: 18, color: blue[300] }}></ModeEditOutlinedIcon> <hr />
+                                                <ModeEditOutlinedIcon sx={{ fontSize: 18, color: blue[300] }} onClick={(e)=>{
+                                                    setInvokeEdit(true)
+                                                    setEditId(data)
+                                                }}></ModeEditOutlinedIcon> <hr />
                                                 <DeleteOutlineSharpIcon sx={{ fontSize: 20, color: red[300] }} onClick={(e) => {
                                                     setInvokeDelete(true)
                                                     setDeleteArr([data._id])

@@ -8,6 +8,7 @@ import axios from "axios";
 import SideBar from "./SideBar";
 import ImportSuccessCard from "./ImportSuccess";
 import DeleteSuccessCard from "./DeleteSuccess";
+import EditCard from "./Edit";
 import JsPDF from 'jspdf';
 
 
@@ -19,6 +20,8 @@ const HomePage = () => {
 
     const [invokeImport, setInvokeImport] = useState(false)
     const [invokeDelete,setInvokeDelete] = useState(false)
+    const [invokeEdit, setInvokeEdit] = useState(false)
+    const [editId, setEditId] = useState("")
     const [invokeDeleteSuccess,setInvokeDeleteSuccess] = useState(false)
     const [invSuc, setInvSuc] = useState(false)
     const [delSuc, setDelSuc] = useState(false)
@@ -27,7 +30,6 @@ const HomePage = () => {
     let [page, setPage] = useState(1)
     let [searchType, setSearchType] = useState("name")
     
-    console.log("importSuccess",invSuc)
     const token = JSON.parse(localStorage.getItem("token"));
     useEffect(() => {
         fetchContacts()
@@ -103,7 +105,7 @@ const HomePage = () => {
 
     console.log(invokeImport)
     return (
-        <GlobalContext.Provider value={{generatePDF,page, delSuc, setDelSuc,handleDelete,invokeDeleteSuccess,setInvokeDeleteSuccess,invSuc, setInvSuc,deleteArr, handleDeleteMany, setDeleteArr, setContactsArr, contactsArr, invokeImport, setInvokeImport, invokeDelete,setInvokeDelete, fetchContacts, searchType, setSearchType}} >
+        <GlobalContext.Provider value={{generatePDF,page, delSuc, setDelSuc,handleDelete,invokeDeleteSuccess,setInvokeDeleteSuccess,invSuc, setInvSuc,deleteArr, handleDeleteMany, setDeleteArr, setContactsArr, contactsArr, invokeImport, setInvokeImport, invokeDelete,setInvokeDelete, fetchContacts, searchType, setSearchType, setInvokeEdit, invokeEdit, setEditId, editId}} >
         <div className="mainContainer">
         
 
@@ -131,6 +133,8 @@ const HomePage = () => {
             {invokeDelete ? <DeleteCard  /> : ""}
             {invSuc ? <ImportSuccessCard /> : ""}
             {delSuc ? <DeleteSuccessCard /> : "" }
+            {invokeEdit ? <EditCard /> : ""}
+            
 
         </div>
         </GlobalContext.Provider>

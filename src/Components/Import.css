@@ -12,6 +12,29 @@
     text-decoration: underline;
     opacity: 2;
 }
+#popupCardEdit{
+    position: fixed;
+    top: 40%;
+    left: 16%;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid lightgrey;
+    color: rgb(26, 128, 162);
+    display: flex;
+    flex-direction: column;
+    text-decoration: underline;
+    opacity: 6;
+}
+#popupCardEdit th{
+    color: whitesmoke;
+}
+#popupCardEdit input{
+    margin: 2px;
+}
+#popupCardEdit button{
+    background-color: rgb(188, 213, 250);
+    margin: 2px;
+}
+
 .icon{
     background-color: rgb(170, 210, 231);
     border-radius: 70px;
