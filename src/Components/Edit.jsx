@@ -7,10 +7,13 @@ const EditCard = () => {
     const {setInvokeEdit, editId, fetchContacts} = useContext(GlobalContext)
     const [editdata, setEditData] = useState({name:"", designation:"", company:"", industry:"", email:"", phoneNumber:"", country:""})
     const token = JSON.parse(localStorage.getItem("token"))
-    console.log(editId)
     const handleEdit = () => {
         setInvokeEdit(false)
-        console.log(editdata)
+        for(let i in editdata){
+            if(!editdata[i]){
+                editdata[i] = editId[i]
+            }
+        }
         axios(`https://custmang-server.onrender.com/api/v1/contacts/${editId._id}`, {
             method:"put",
             headers:{
